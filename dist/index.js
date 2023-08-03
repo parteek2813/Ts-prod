@@ -22,7 +22,7 @@ class User {
         return `apple${this.email}`;
     }
     get courseCount() {
-        return this._courseCount;
+        return 5 + this._courseCount;
     }
     set courseCount(courseNum) {
         if (courseNum <= 1) {
@@ -32,6 +32,15 @@ class User {
     }
 }
 const Parteek = new User("p@p.com", "Parteek");
+class subUser extends User {
+    constructor() {
+        super(...arguments);
+        this.isFamily = true;
+    }
+    changeCourseCount() {
+        this._courseCount = 4;
+    }
+}
 // for making the property as private .... we can use the private keyword or the #[hash] between them.....
 // the # comes from js world and private comes from ts world
 /**

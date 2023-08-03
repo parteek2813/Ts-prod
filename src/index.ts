@@ -9,7 +9,7 @@
 // }
 
 class User {
-  private _courseCount = 1;
+  protected _courseCount = 1;
 
   private readonly city: string = "Gohana";
   constructor(public email: string, public name: string) {}
@@ -22,7 +22,7 @@ class User {
   }
 
   get courseCount(): number {
-    return this._courseCount;
+    return 5 + this._courseCount;
   }
 
   set courseCount(courseNum) {
@@ -34,6 +34,13 @@ class User {
 }
 
 const Parteek = new User("p@p.com", "Parteek");
+
+class subUser extends User {
+  isFamily: boolean = true;
+  changeCourseCount() {
+    this._courseCount = 4;
+  }
+}
 
 // for making the property as private .... we can use the private keyword or the #[hash] between them.....
 // the # comes from js world and private comes from ts world
