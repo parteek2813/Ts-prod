@@ -8,6 +8,9 @@ abstract class TakePhoto {
   }
 }
 
+// abstract class is something , in which use them directly but
+// can be used by another class extending that class
+
 class Instagram extends TakePhoto {
   constructor(
     public cameraMode: string,
