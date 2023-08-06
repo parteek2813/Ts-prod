@@ -4,36 +4,18 @@
 //   }
 //   return val + 3;
 // }
-function processUserOrAdmin(userOrAdmin) {
-  // narrowing
-  if (userOrAdmin.role == "user") {
-    // we know it is User type here
-    console.log("Username:", userOrAdmin.username);
-    console.log("Email:", userOrAdmin.email);
+function calculateArea(shape) {
+  if ("radius" in shape && shape.type === "circle") {
+    return Math.PI * Math.pow(shape.radius, 2);
+  } else if ("sideLength" in shape && shape.type === "square") {
+    return Math.pow(shape.sideLength, 2);
   } else {
-    console.log("Username:", userOrAdmin.username);
-    console.log("Permissions:", userOrAdmin.permissions);
+    throw new Error("Invalid shape or missing properties");
   }
 }
-// USAGE:
-var user = {
-  role: "user",
-  username: "john_doe",
-  email: "john_doe@gmail.com",
-};
-var admin = {
-  role: "admin",
-  username: "admin_user",
-  permissions: ["read", "write"],
-};
-processUserOrAdmin(user);
-processUserOrAdmin(admin);
-
-/**
- * In the processUserOrAdmin function, we have narrowed the
- * type of userOrAdmin variable based on the role property.
- * When the role is 'user', we know it's a User type and can
- * access properties specific to User, such as username and
- * email. Similarly, when the role is 'admin', we know it's
- * an Admin type and can access username and permissions.
- */
+var circle = { type: "circle", radius: 5 };
+console.log(calculateArea(circle));
+var square = { type: "square", sideLength: 2 };
+console.log(calculateArea(square));
+// const triangle: Shape = { type: "triangle" }; // Missing properties
+// console.log(calculateArea(triangle));
